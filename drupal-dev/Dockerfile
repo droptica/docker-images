@@ -1,4 +1,4 @@
-FROM composer/composer:master
+FROM composer/composer
 
 RUN apt-get update && apt-get install -y mysql-client && rm -r /var/lib/apt/lists/*
 
