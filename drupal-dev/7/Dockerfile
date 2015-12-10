@@ -6,13 +6,11 @@ RUN docker-php-ext-install mysql pdo pdo_mysql
 
 RUN composer global require drush/drush:dev-master
 
-RUN echo $HOME
-
 ENV PATH "/root/composer/vendor/bin:$PATH"
 
 WORKDIR /root
 
-RUN curl -LSs http://drupalconsole.com/installer | php
+RUN curl http://drupalconsole.com/installer -L -o drupal.phar
 
 RUN mv console.phar /usr/local/bin/drupal-console
 
