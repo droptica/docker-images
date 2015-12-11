@@ -1,9 +1,8 @@
-FROM php:5-apache
+FROM droptica/drupal-apache
 
-RUN a2enmod rewrite && apt-get update && apt-get install -y \
-  libjpeg62-turbo-dev \
-  libpng12-dev \
-  && pecl install xdebug \ 
-  && docker-php-ext-install pdo pdo_mysql gd \
-  && docker-php-ext-enable opcache xdebug
+RUN curl -L -o /tmp/xdebug.tgz http://xdebug.org/files/xdebug-2.4.0rc2.tgz \
+        && tar xfz /tmp/xdebug.tgz \
+        && rm -r /tmp/xdebug.tgz \
+        && mv xdebug-2.4.0RC2 /usr/src/php/ext/xdebug \
+        && docker-php-ext-install xdebug
 

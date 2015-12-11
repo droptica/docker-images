@@ -1,4 +1,4 @@
-FROM droptica/drupal-php-fpm
+FROM droptica/drupal-php-fpm:7
 
 RUN curl -L -o /tmp/xdebug.tgz http://xdebug.org/files/xdebug-2.4.0rc2.tgz \
         && tar xfz /tmp/xdebug.tgz \

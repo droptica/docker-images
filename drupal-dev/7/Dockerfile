@@ -2,7 +2,7 @@ FROM composer/composer:php7-base
 
 RUN apt-get update && apt-get install -y mysql-client && rm -r /var/lib/apt/lists/*
 
-RUN docker-php-ext-install mysql pdo pdo_mysql
+RUN docker-php-ext-install pdo pdo_mysql
 
 RUN composer global require drush/drush:dev-master
 
@@ -12,7 +12,7 @@ WORKDIR /root
 
 RUN curl http://drupalconsole.com/installer -L -o drupal.phar
 
-RUN mv console.phar /usr/local/bin/drupal-console
+RUN mv drupal.phar /usr/local/bin/drupal-console
 
 WORKDIR /app
 

@@ -12,7 +12,7 @@ WORKDIR /root
 
 RUN curl http://drupalconsole.com/installer -L -o drupal.phar
 
-RUN mv console.phar /usr/local/bin/drupal-console
+RUN mv drupal.phar /usr/local/bin/drupal-console
 
 WORKDIR /app
 
