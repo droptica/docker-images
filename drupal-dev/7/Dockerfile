@@ -1,6 +1,6 @@
-FROM composer/composer:php7-base
+FROM composer/composer:php7
 
-RUN apt-get update && apt-get install -y mysql-client && rm -r /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y mysql-client python && rm -r /var/lib/apt/lists/*
 
 RUN docker-php-ext-install pdo pdo_mysql
 
