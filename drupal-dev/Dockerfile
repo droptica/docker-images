@@ -1,6 +1,8 @@
 FROM composer/composer
 
-RUN apt-get update && apt-get install -y mysql-client python python-yaml && rm -r /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y mysql-client python python-yaml ruby-dev ruby rubygems && rm -r /var/lib/apt/lists/*
+
+RUN gem install bundler
 
 RUN docker-php-ext-install mysql pdo pdo_mysql
 
