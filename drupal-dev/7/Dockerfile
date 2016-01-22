@@ -16,6 +16,8 @@ RUN curl http://drupalconsole.com/installer -L -o drupal.phar
 
 RUN mv drupal.phar /usr/local/bin/drupal-console
 
+RUN chmod +x /usr/local/bin/drupal-console
+
 WORKDIR /app
 
 VOLUME /app
@@ -66,6 +68,10 @@ RUN cat /root/bashrc >> /root/.bashrc
 
 RUN echo "alias ls='ls --color=auto'" >> /root/.bashrc
 
+
+RUN curl -L -o /usr/bin/codecept http://codeception.com/codecept.phar
+
+RUN chmod +x /usr/bin/codecept
 
 ENTRYPOINT []
 
