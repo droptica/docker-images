@@ -7,12 +7,11 @@ RUN curl -L -o /tmp/imagick.tgz http://pecl.php.net/get/imagick-3.4.0RC6.tgz \
   && tar xfz /tmp/imagick.tgz \
   && rm -r /tmp/imagick.tgz \
   && mv imagick-3.4.0RC6 /usr/src/php/ext/imagick \
-  && docker-php-ext-install imagick
+  && docker-php-ext-install imagick mysql pdo pdo_mysql gd mbstring
+  && docker-php-ext-enable opcache
 
 
 RUN gem install bundler
-
-RUN docker-php-ext-install mysql pdo pdo_mysql
 
 RUN composer global require drush/drush:dev-master
 
