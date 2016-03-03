@@ -1,10 +1,18 @@
 FROM composer/composer:php7
 
-RUN apt-get update && apt-get install -y mysql-client python python-yaml ruby-dev ruby rubygems && rm -r /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y mysql-client python python-yaml ruby-dev ruby rubygems pkg-config libmagickwand-dev imagemagick \
+ && rm -r /var/lib/apt/lists/*
+
+RUN curl -L -o /tmp/imagick.tgz http://pecl.php.net/get/imagick-3.4.0RC6.tgz \
+  && tar xfz /tmp/imagick.tgz \
+  && rm -r /tmp/imagick.tgz \
+  && mv imagick-3.4.0RC6 /usr/src/php/ext/imagick \
+  && docker-php-ext-install imagick
+
 
 RUN gem install bundler
 
-RUN docker-php-ext-install pdo pdo_mysql
+RUN docker-php-ext-install mysql pdo pdo_mysql
 
 RUN composer global require drush/drush:dev-master
 
@@ -21,8 +29,6 @@ RUN chmod +x /usr/local/bin/drupal-console
 WORKDIR /app
 
 VOLUME /app
-
-RUN echo DOCKER-DRUPAL-DEV > /etc/hostname
 
 RUN git config --global alias.st status; \
   git config --global alias.ci commit; \
@@ -60,7 +66,7 @@ RUN git config --global alias.st status; \
 COPY bash_aliases /root/bashrc
 
 #https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
-COPY git-prompt.sh /root/.git-prompt.sh 
+COPY git-prompt.sh /root/.git-prompt.sh
 
 RUN echo "source ~/.git-prompt.sh" >> /root/.bashrc
 
@@ -72,14 +78,6 @@ RUN echo "alias ls='ls --color=auto'" >> /root/.bashrc
 RUN curl -L -o /usr/bin/codecept http://codeception.com/codecept.phar
 
 RUN chmod +x /usr/bin/codecept
-
-RUN apt-get install -y \
-  pkg-config libmagickwand-dev imagemagick \
-  && curl -L -o /tmp/imagick.tgz http://pecl.php.net/get/imagick-3.4.0RC6.tgz \
-  && tar xfz /tmp/imagick.tgz \
-  && rm -r /tmp/imagick.tgz \
-  && mv imagick-3.4.0RC6 /usr/src/php/ext/imagick \
-  && docker-php-ext-install imagick
 
 ENTRYPOINT []
 
