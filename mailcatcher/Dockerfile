@@ -16,4 +16,4 @@ EXPOSE 1025
 # webserver port
 EXPOSE 80
 
-CMD ["mailcatcher", "-f", "--ip=0.0.0.0", "--smtp-ip", "80"]
+CMD ["mailcatcher", "-f", "--ip=0.0.0.0", "--http-port", "80"]
