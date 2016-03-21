@@ -13,4 +13,4 @@ RUN ln -sf /dev/stdout /var/log/cron.log \
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENTRYPOINT cron && tail -F /var/log/syslog /var/log/cron.log
+ENTRYPOINT cron -f -l -L 15
