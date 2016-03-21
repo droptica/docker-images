@@ -6,8 +6,9 @@ RUN composer global require drush/drush:dev-master
 
 ENV PATH "/root/composer/vendor/bin:$PATH"
 
-RUN touch /var/log/cron.log
-RUN touch /var/log/syslog
+RUN ln -sf /dev/stdout /var/log/cron.log \
+	&& ln -sf /dev/stderr /var/log/syslog
+
 
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
