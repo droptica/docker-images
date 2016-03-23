@@ -1,6 +1,6 @@
 FROM composer/composer:php7
 
-RUN apt-get update &&  apt-get -y install cron rsyslog
+RUN apt-get update &&  apt-get -y install cron rsyslog mysql-client
 
 RUN composer global require drush/drush:dev-master
 
@@ -8,7 +8,7 @@ ENV PATH "/root/composer/vendor/bin:$PATH"
 
 RUN ln -sf /dev/stdout /var/log/cron.log
 
-RUN docker-php-ext-install pdo_mysql \
+RUN docker-php-ext-install pdo_mysql pdo\
       && docker-php-ext-enable opcache
 
 RUN echo "cron.*                         /var/log/cron.log" >> /etc/rsyslog.d/cron.conf
