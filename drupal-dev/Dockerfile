@@ -1,6 +1,6 @@
 FROM composer/composer
 
-RUN apt-get update && apt-get install -y mysql-client python python-yaml ruby-dev ruby rubygems pkg-config libmagickwand-dev imagemagick \
+RUN apt-get update && apt-get install --no-install-recommends  -y mysql-client python python-yaml python-setuptools ruby-dev ruby rubygems pkg-config libmagickwand-dev imagemagick \
  && rm -r /var/lib/apt/lists/*
 
 RUN curl -L -o /tmp/imagick.tgz http://pecl.php.net/get/imagick-3.4.0RC6.tgz \
@@ -76,6 +76,11 @@ RUN echo "alias ls='ls --color=auto'" >> /root/.bashrc
 RUN curl -L -o /usr/bin/codecept http://codeception.com/codecept.phar
 
 RUN chmod +x /usr/bin/codecept
+
+RUN cd /root && git clone https://bitbucket.org/droptica/docker-drupal.git \
+    && cd docker-drupal && python setup.py install && cd .. && rm -Rf docker-drupal
+
+RUN drush -y dl registry_rebuild-7.x
 
 ENTRYPOINT []
 
