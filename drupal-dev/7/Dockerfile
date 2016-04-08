@@ -1,13 +1,14 @@
 FROM composer/composer:php7
 
-RUN apt-get update && apt-get install --no-install-recommends  -y mysql-client python python-yaml python-setuptools ruby-dev ruby rubygems pkg-config libmagickwand-dev imagemagick \
+RUN apt-get update
+&& apt-get install --no-install-recommends  -y mysql-client python python-yaml python-setuptools ruby-dev ruby rubygems pkg-config libmagickwand-dev imagemagick \
  && rm -r /var/lib/apt/lists/*
 
 RUN curl -L -o /tmp/imagick.tgz http://pecl.php.net/get/imagick-3.4.0RC6.tgz \
   && tar xfz /tmp/imagick.tgz \
   && rm -r /tmp/imagick.tgz \
   && mv imagick-3.4.0RC6 /usr/src/php/ext/imagick \
-  && docker-php-ext-install imagick pdo pdo_mysql gd mbstring
+  && docker-php-ext-install imagick pdo pdo_mysql gd mbstring \
   && docker-php-ext-enable opcache
 
 
