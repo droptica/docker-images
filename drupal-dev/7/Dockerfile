@@ -1,6 +1,6 @@
 FROM composer/composer:php7
 
-RUN apt-get update
+RUN apt-get update \
 && apt-get install --no-install-recommends  -y mysql-client python python-yaml python-setuptools ruby-dev ruby rubygems pkg-config libmagickwand-dev imagemagick \
  && rm -r /var/lib/apt/lists/*
 
