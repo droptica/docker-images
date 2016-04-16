@@ -1,7 +1,8 @@
 FROM composer/composer:php7
 
 RUN apt-get update \
-  && apt-get install --no-install-recommends  -y mysql-client libmagickwand-dev imagemagick
+  && apt-get install --no-install-recommends  -y rubygems mysql-client libmagickwand-dev imagemagick \
+  && gem install bundler
 
 RUN curl -L -o /tmp/imagick.tgz http://pecl.php.net/get/imagick-3.4.1.tgz \
   && tar xfz /tmp/imagick.tgz \
@@ -57,8 +58,6 @@ COPY files/git-prompt.sh /root/.git-prompt.sh
 RUN echo "source ~/.git-prompt.sh" >> /root/.bashrc
 
 RUN echo "alias ls='ls --color=auto'" >> /root/.bashrc
-
-RUN apt-get update && apt-get install -y rubygems && gem install bundler
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
