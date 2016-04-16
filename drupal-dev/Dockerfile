@@ -24,6 +24,9 @@ RUN mv drupal.phar /usr/local/bin/drupal-console
 
 RUN chmod +x /usr/local/bin/drupal-console
 
+RUN curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony \
+    && chmod a+x /usr/local/bin/symfony
+
 WORKDIR /app
 
 VOLUME /app
