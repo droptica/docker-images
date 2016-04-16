@@ -1,4 +1,4 @@
-FROM composer/composer
+FROM composer/composer:php7
 
 RUN apt-get update \
   && apt-get install --no-install-recommends  -y mysql-client libmagickwand-dev imagemagick
@@ -47,10 +47,10 @@ RUN git config --global alias.st status; \
   git config --global merge.summary true; \
   git config --global merge.tool meld;
 
-COPY 7/files/bash_aliases /root/.bashrc
+COPY files/bash_aliases /root/.bashrc
 
 #https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
-COPY 7/files/git-prompt.sh /root/.git-prompt.sh
+COPY files/git-prompt.sh /root/.git-prompt.sh
 
 RUN echo "source ~/.git-prompt.sh" >> /root/.bashrc
 
