@@ -4,6 +4,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends python python-y
 
 RUN composer global require drush/drush:dev-master
 
+ENV PATH "/composer/vendor/bin:$PATH"
+
 RUN curl http://drupalconsole.com/installer -L -o /usr/local/bin/drupal-console \
   && chmod +x /usr/local/bin/drupal-console
 
@@ -12,8 +14,6 @@ RUN curl -L -o /usr/bin/codecept http://codeception.com/codecept.phar \
 
 RUN cd /root && git clone https://bitbucket.org/droptica/docker-drupal.git \
     && cd docker-drupal && python setup.py install && cd .. && rm -Rf docker-drupal
-
-ENV PATH "/composer/vendor/bin:$PATH"
 
 RUN drush -y dl registry_rebuild-7.x
 
