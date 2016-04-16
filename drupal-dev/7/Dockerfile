@@ -1,6 +1,6 @@
 FROM droptica/symfony-dev:7
 
-RUN apt-get update && apt-get install --no-install-recommends python python-yaml python-setuptools pkg-config
+RUN apt-get update && apt-get install -y --no-install-recommends python python-yaml python-setuptools pkg-config
 
 RUN composer global require drush/drush:dev-master
 
