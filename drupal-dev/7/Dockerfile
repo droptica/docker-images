@@ -4,9 +4,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends python python-y
 
 RUN composer global require drush/drush:dev-master
 
-RUN curl http://drupalconsole.com/installer -L -o drupal.phar
-
-RUN mv drupal.phar /usr/local/bin/drupal-console
+RUN curl http://drupalconsole.com/installer -L -o /usr/local/bin/drupal-console
 
 RUN chmod +x /usr/local/bin/drupal-console
 

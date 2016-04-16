@@ -12,6 +12,8 @@ RUN curl -L -o /tmp/imagick.tgz http://pecl.php.net/get/imagick-3.4.1.tgz \
 RUN curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony \
     && chmod a+x /usr/local/bin/symfony
 
+RUN mkdir -p /root/composer/vendor/bin
+
 ENV PATH "/root/composer/vendor/bin:$PATH"
 
 RUN git config --global alias.st status; \

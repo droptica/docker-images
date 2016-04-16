@@ -4,20 +4,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends python python-y
 
 RUN composer global require drush/drush:dev-master
 
-RUN curl http://drupalconsole.com/installer -L -o drupal.phar
+RUN curl http://drupalconsole.com/installer -L -o /usr/local/bin/drupal-console \
+  && chmod +x /usr/local/bin/drupal-console
 
-RUN mv drupal.phar /usr/local/bin/drupal-console
-
-RUN chmod +x /usr/local/bin/drupal-console
-
-RUN curl -L -o /usr/bin/codecept http://codeception.com/codecept.phar
-
-RUN chmod +x /usr/bin/codecept
+RUN curl -L -o /usr/bin/codecept http://codeception.com/codecept.phar \
+ && chmod +x /usr/bin/codecept
 
 RUN cd /root && git clone https://bitbucket.org/droptica/docker-drupal.git \
     && cd docker-drupal && python setup.py install && cd .. && rm -Rf docker-drupal
 
-RUN drush -y dl registry_rebuild-7.x
+#RUN drush -y dl registry_rebuild-7.x
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
