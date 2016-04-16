@@ -7,7 +7,7 @@ RUN curl -L -o /tmp/imagick.tgz http://pecl.php.net/get/imagick-3.4.1.tgz \
   && tar xfz /tmp/imagick.tgz \
   && rm -r /tmp/imagick.tgz \
   && mv imagick-3.4.1 /usr/src/php/ext/imagick \
-  && docker-php-ext-install imagick mysql pdo pdo_mysql gd mbstring
+  && docker-php-ext-install imagick pdo pdo_mysql gd mbstring
 
 
 RUN gem install bundler

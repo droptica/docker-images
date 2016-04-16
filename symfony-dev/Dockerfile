@@ -2,7 +2,7 @@ FROM composer/composer:master
 
 RUN apt-get update && apt-get install -y mysql-client && rm -r /var/lib/apt/lists/*
 
-RUN docker-php-ext-install mysql pdo pdo_mysql
+RUN docker-php-ext-install pdo pdo_mysql
 
 #RUN composer global require drush/drush:dev-master
 
