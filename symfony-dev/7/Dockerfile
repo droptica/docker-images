@@ -1,7 +1,7 @@
 FROM composer/composer:php7
 
 RUN apt-get update \
-  && apt-get install --no-install-recommends  -y rubygems mysql-client libmagickwand-dev imagemagick \
+  && apt-get install --no-install-recommends  -y bash-completion rubygems mysql-client libmagickwand-dev imagemagick \
   && gem install bundler
 
 RUN curl -L -o /tmp/imagick.tgz http://pecl.php.net/get/imagick-3.4.1.tgz \
