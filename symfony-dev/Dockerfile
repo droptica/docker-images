@@ -13,7 +13,7 @@ RUN curl -L -o /tmp/imagick.tgz http://pecl.php.net/get/imagick-3.4.1.tgz \
 RUN curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony \
     && chmod a+x /usr/local/bin/symfony
 
-RUN mkdir /root/composer/
+RUN mkdir  /root/composer/
 
 RUN composer global require bamarni/symfony-console-autocomplete -d /root/composer/
 
