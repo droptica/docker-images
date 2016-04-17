@@ -13,9 +13,11 @@ RUN curl -L -o /tmp/imagick.tgz http://pecl.php.net/get/imagick-3.4.1.tgz \
 RUN curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony \
     && chmod a+x /usr/local/bin/symfony
 
-RUN mkdir -p /root/composer/vendor/bin
+ENV composer global require bamarni/symfony-console-autocomplete -d /root/composer/
 
 ENV PATH "/root/composer/vendor/bin:$PATH"
+
+RUN symfony-autocomplete composer --shell bash > /etc/bash_completion.d/composer
 
 RUN git config --global alias.st status; \
   git config --global alias.ci commit; \
