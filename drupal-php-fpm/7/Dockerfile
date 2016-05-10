@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN apt-get install -y \
   pkg-config libmagickwand-dev imagemagick \
-  && curl -L -o /tmp/imagick.tgz http://pecl.php.net/get/imagick-3.4.1.tgz \
+  && curl -L -o /tmp/imagick.tgz http://pecl.php.net/get/imagick-3.4.2.tgz \
   && tar xfz /tmp/imagick.tgz \
   && rm -r /tmp/imagick.tgz \
   && mv imagick-3.4.1 /usr/src/php/ext/imagick \
