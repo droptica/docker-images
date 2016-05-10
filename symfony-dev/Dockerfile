@@ -19,7 +19,7 @@ RUN apt-get install -y \
   && curl -L -o /tmp/imagick.tgz http://pecl.php.net/get/imagick-3.4.2.tgz \
   && tar xfz /tmp/imagick.tgz \
   && rm -r /tmp/imagick.tgz \
-  && mv imagick-3.4.1 /usr/src/php/ext/imagick \
+  && mv imagick-3.4.2 /usr/src/php/ext/imagick \
   && docker-php-ext-install imagick
 
 RUN curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony \
