@@ -25,6 +25,8 @@ RUN apt-get install -y \
 RUN curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony \
     && chmod a+x /usr/local/bin/symfony
 
+RUN mkdir /root/composer
+
 RUN composer global require bamarni/symfony-console-autocomplete -d /root/composer/
 
 ENV PATH "/root/composer/vendor/bin:$PATH"
