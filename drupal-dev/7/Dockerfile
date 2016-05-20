@@ -2,7 +2,9 @@ FROM droptica/symfony-dev:7
 
 RUN apt-get update && apt-get install -y --no-install-recommends python python-yaml python-setuptools pkg-config
 
-RUN composer global require drush/drush:dev-master -d /root/composer/
+RUN php -r "readfile('http://files.drush.org/drush.phar');" > /usr/bin/drush \
+    && chmod +x /usr/bin/drush \
+    && drush init -y
 
 RUN curl http://drupalconsole.com/installer -L -o /usr/local/bin/drupal-console \
   && chmod +x /usr/local/bin/drupal-console

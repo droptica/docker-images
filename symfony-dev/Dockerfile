@@ -1,4 +1,4 @@
-FROM composer/composer
+FROM composer/composer:php5
 
 RUN apt-get update \
   && apt-get install --no-install-recommends  -y bash-completion rubygems mysql-client libmagickwand-dev imagemagick \
