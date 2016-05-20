@@ -171,8 +171,18 @@ class Docker:
                                                return_output=True)
         return web_container_ip_address
 
+    def get_nginx_proxy_ip(self):
+        if not run_cmd('docker ps -q -f name=ngnix-proxy', return_output=True):
+            return False
+        container_ip_address = run_cmd('docker inspect --format "{{ .NetworkSettings.IPAddress }}" ngnix-proxy',
+                                               return_output=True)
+        return container_ip_address
+
     def show_ip(self):
         print self.get_container_ip()
+
+    def show_nginx_proxy_ip(self):
+        print self.get_nginx_proxy_ip()
 
     def docker_shell(self):
         docker_command = self.docker_command()
@@ -250,8 +260,8 @@ class Docker:
 
     def add_entry_to_etc_hosts(self):
         try:
-            web_container_ip_address = self.get_container_ip()
-            if not web_container_ip_address:
+            nginx_proxy_ip = self.get_nginx_proxy_ip()
+            if not nginx_proxy_ip:
                 raise Exception
 
             with open('/etc/hosts', 'rt') as f:
@@ -261,7 +271,7 @@ class Docker:
                     host_names += ' ' + phpmyadmin_host
                 s = f.read()
                 if not host_names in s:
-                    s += "\n%s\t\t%s\n" % (web_container_ip_address, host_names)
+                    s += "\n%s\t\t%s\n" % (nginx_proxy_ip, host_names)
                     with open('/tmp/etc_hosts.tmp', 'wt') as outf:
                         outf.write(s)
 
