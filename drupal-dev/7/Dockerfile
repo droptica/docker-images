@@ -2,6 +2,8 @@ FROM droptica/symfony-dev:7
 
 RUN apt-get update && apt-get install -y --no-install-recommends python python-yaml python-setuptools pkg-config
 
+RUN easy_install python-dotenv
+
 RUN php -r "readfile('http://files.drush.org/drush.phar');" > /usr/bin/drush \
     && chmod +x /usr/bin/drush \
     && drush init -y
