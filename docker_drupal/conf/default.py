@@ -42,6 +42,8 @@ DEV_DOCKER_IMAGES = {
 
 SETTINGS_DIR = None
 
+ENV = None
+
 try:
     from docker_drupal_config_overrides import *
 except Exception as exception:

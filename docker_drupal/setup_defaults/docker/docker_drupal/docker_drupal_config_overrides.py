@@ -44,4 +44,6 @@ uncomment only this settings which you want to override
 #     ]
 # }
 #
-# SETTINGS_DIR = 'local'
+# SETTINGS_DIR = None
+#
+# ENV = None
