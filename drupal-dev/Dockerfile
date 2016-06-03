@@ -7,6 +7,7 @@ RUN easy_install python-dotenv
 RUN php -r "readfile('http://files.drush.org/drush.phar');" > /usr/bin/drush \
     && chmod +x /usr/bin/drush \
     && drush init -y
+    && drush init -y
 
 RUN curl http://drupalconsole.com/installer -L -o /usr/local/bin/drupal-console \
   && chmod +x /usr/local/bin/drupal-console
