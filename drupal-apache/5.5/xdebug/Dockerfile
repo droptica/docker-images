@@ -1,4 +1,4 @@
-FROM droptica/drupal-apache
+FROM droptica/drupal-apache:5.5
 
 RUN curl -L -o /tmp/xdebug.tgz http://xdebug.org/files/xdebug-2.4.0.tgz \
         && tar xfz /tmp/xdebug.tgz \
