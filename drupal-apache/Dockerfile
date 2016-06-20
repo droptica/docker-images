@@ -8,7 +8,7 @@ RUN a2enmod rewrite && apt-get update && apt-get install -y \
   mcrypt \
   libjpeg-dev \
   && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-  && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql mbstring \
+  && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql mbstring zip \
   && docker-php-ext-enable opcache
 
 RUN apt-get install -y \
