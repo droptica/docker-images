@@ -4,12 +4,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends python python-y
 
 RUN easy_install python-dotenv
 
-RUN php -r "readfile('http://files.drush.org/drush.phar');" > /usr/bin/drush \
+php -r "readfile('https://s3.amazonaws.com/files.drush.org/drush.phar');" > /usr/bin/drush \
     && chmod +x /usr/bin/drush \
     && drush init -y
 
-RUN curl http://drupalconsole.com/installer -L -o /usr/local/bin/drupal-console \
-  && chmod +x /usr/local/bin/drupal-console && drupal-console init
+RUN php -r "readfile('https://drupalconsole.com/installer');" > /usr/local/bin/drupal \
+  && chmod +x /usr/local/bin/drupal && drupal init
 
 RUN curl -L -o /usr/bin/codecept http://codeception.com/codecept.phar \
  && chmod +x /usr/bin/codecept
