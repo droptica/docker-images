@@ -1,6 +1,6 @@
 FROM php:5-apache
 
-RUN a2enmod rewrite && apt-get update && apt-get install -y \
+RUN a2enmod rewrite && apt-get update && apt-get install --no-install-recommends -y \
   libfreetype6-dev \
   libjpeg62-turbo-dev \
   libmcrypt-dev \
@@ -12,7 +12,7 @@ RUN a2enmod rewrite && apt-get update && apt-get install -y \
   && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql mbstring iconv mcrypt zip \
   && docker-php-ext-enable opcache
 
-RUN apt-get install -y \
+RUN apt-get install --no-install-recommends -y \
   pkg-config libmagickwand-dev imagemagick \
   && curl -L -o /tmp/imagick.tgz http://pecl.php.net/get/imagick-3.4.2.tgz \
   && tar xfz /tmp/imagick.tgz \
