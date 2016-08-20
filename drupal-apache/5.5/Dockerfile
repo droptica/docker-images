@@ -8,14 +8,16 @@ RUN a2enmod rewrite && apt-get update && apt-get install --no-install-recommends
   mcrypt \
   libmcrypt-dev \
   libjpeg-dev \
+  pkg-config libmagickwand-dev imagemagick \
   && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-  && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql mbstring iconv mcrypt zip\
+  && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql mbstring iconv mcrypt zip \
   && docker-php-ext-enable opcache
 
-RUN apt-get install  --no-install-recommends  -y \
-  pkg-config libmagickwand-dev imagemagick \
-  && curl -L -o /tmp/imagick.tgz http://pecl.php.net/get/imagick-3.4.2.tgz \
-  && tar xfz /tmp/imagick.tgz \
+RUN curl -L -o /tmp/imagick.tgz http://pecl.php.net/get/imagick-3.4.2.tgz \
+  && tar xfz /tmp/imagick.tgz -C /tmp \
+  && mkdir -p /usr/src/php/ext/ \
   && rm -r /tmp/imagick.tgz \
-  && mv imagick-3.4.2 /usr/src/php/ext/imagick \
+  && mv /tmp/imagick-3.4.2 /usr/src/php/ext/imagick \
   && docker-php-ext-install imagick
+
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
