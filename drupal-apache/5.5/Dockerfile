@@ -15,7 +15,7 @@ RUN a2enmod rewrite && apt-get update && apt-get install --no-install-recommends
 
 RUN curl -L -o /tmp/imagick.tgz http://pecl.php.net/get/imagick-3.4.2.tgz \
   && tar xfz /tmp/imagick.tgz -C /tmp \
-  && mkdir -p /usr/src/php/ext/ \
+  && docker-php-source extract \
   && rm -r /tmp/imagick.tgz \
   && mv /tmp/imagick-3.4.2 /usr/src/php/ext/imagick \
   && docker-php-ext-install imagick
