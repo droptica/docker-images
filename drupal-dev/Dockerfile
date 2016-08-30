@@ -4,14 +4,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends python python-y
 
 RUN easy_install python-dotenv
 
-php -r "readfile('https://s3.amazonaws.com/files.drush.org/drush.phar');" > /usr/bin/drush \
+RUN php -r "readfile('https://s3.amazonaws.com/files.drush.org/drush.phar');" > /usr/bin/drush \
     && chmod +x /usr/bin/drush \
     && drush init -y
 
 RUN php -r "readfile('https://drupalconsole.com/installer');" > /usr/local/bin/drupal \
   && chmod +x /usr/local/bin/drupal && drupal init
-
-
 
 RUN cd /root && git clone https://github.com/droptica/docker-drupal.git \
     && cd docker-drupal && python setup.py install && cd .. && rm -Rf docker-drupal
