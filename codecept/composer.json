@@ -1,0 +1,19 @@
+{
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/droptica/codeception-drupal-content-types"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/droptica/codeception-module-drupal-user-registry"
+    }
+  ],
+  "require": {
+    "codeception/codeception": "2.1.*",
+    "droptica/codeception-drupal-content-types": "dev-develop",
+    "ixis/codeception-drupal-mail": "dev-develop",
+    "droptica/codeception-module-drupal-user-registry": "dev-develop",
+    "phpunit/phpunit": "~5"
+  }
+}

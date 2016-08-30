@@ -11,8 +11,7 @@ php -r "readfile('https://s3.amazonaws.com/files.drush.org/drush.phar');" > /usr
 RUN php -r "readfile('https://drupalconsole.com/installer');" > /usr/local/bin/drupal \
   && chmod +x /usr/local/bin/drupal && drupal init
 
-RUN curl -L -o /usr/bin/codecept http://codeception.com/codecept.phar \
- && chmod +x /usr/bin/codecept
+
 
 RUN cd /root && git clone https://github.com/droptica/docker-drupal.git \
     && cd docker-drupal && python setup.py install && cd .. && rm -Rf docker-drupal
