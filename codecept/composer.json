@@ -3,7 +3,7 @@
     {
       "type": "vcs",
       "url": "https://github.com/droptica/codeception-drupal-content-types"
-    },
+    }
   ],
   "require": {
     "codeception/codeception": "2.1.*",
