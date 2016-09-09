@@ -7,7 +7,7 @@
   ],
   "require": {
     "codeception/codeception": "2.1.*",
-    "chapabu/codeception-module-drupal",
+    "chapabu/codeception-module-drupal": "dev-develop",
     "droptica/codeception-drupal-content-types": "dev-develop",
     "ixis/codeception-drupal-mail": "dev-develop",
     "phpunit/phpunit": "~5"
