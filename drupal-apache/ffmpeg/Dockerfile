@@ -21,3 +21,12 @@ RUN apt-get -t jessie-backports install -y ffmpeg
 RUN ln -s /usr/bin/ffmpeg /usr/local/bin/ffmpeg
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+
+ADD entrypoint.sh /bin/entrypoint.sh
+
+RUN chmod 777 /bin/entrypoint.sh
+
+ADD htpasswd.conf /etc/apache2/conf-available/htpasswd.conf
+
+CMD entrypoint.sh
