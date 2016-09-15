@@ -22,3 +22,10 @@ RUN curl -L -o /tmp/imagick.tgz http://pecl.php.net/get/imagick-3.4.2.tgz \
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+ADD entrypoint.sh /bin/entrypoint.sh
+
+RUN chmod 777 /bin/entrypoint.sh
+
+ADD htpasswd.conf /etc/apache2/conf-available/htpasswd.conf
+
+CMD entrypoint.sh
