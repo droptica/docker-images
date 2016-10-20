@@ -73,6 +73,8 @@ RUN git config --global alias.st status; \
   git config --global merge.summary true; \
   git config --global merge.tool meld;
 
+COPY 7/files/php.ini /usr/local/etc/php/conf.d/php.ini
+
 COPY 7/files/bash_aliases /root/.bashrc
 
 #https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
@@ -83,6 +85,8 @@ RUN echo "source ~/.git-prompt.sh" >> /root/.bashrc
 RUN echo "alias ls='ls --color=auto'" >> /root/.bashrc
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+ENV  XDEBUG_CONFIG "idekey=session_name"
 
 ENTRYPOINT []
 
