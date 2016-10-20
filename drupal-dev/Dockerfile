@@ -1,5 +1,6 @@
 FROM droptica/symfony-dev
 
+
 RUN apt-get update && apt-get install -y --no-install-recommends python python-yaml python-setuptools pkg-config
 
 RUN easy_install python-dotenv
