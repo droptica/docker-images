@@ -23,10 +23,13 @@ RUN ln -s /usr/bin/ffmpeg /usr/local/bin/ffmpeg
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 
-ADD entrypoint.sh /bin/entrypoint.sh
+ADD config/entrypoint.sh /bin/entrypoint.sh
 
 RUN chmod 777 /bin/entrypoint.sh
 
-ADD htpasswd.conf /etc/apache2/conf-available/htpasswd.conf
+ADD config/htpasswd.conf /etc/apache2/conf-available/htpasswd.conf
+
+ADD config/000-default.conf /etc/apache2/sites-available/000-default.conf
+ADD config/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
 
 CMD entrypoint.sh
