@@ -31,4 +31,6 @@ ADD config/htpasswd.conf /etc/apache2/conf-available/htpasswd.conf
 ADD config/000-default.conf /etc/apache2/sites-available/000-default.conf
 ADD config/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
 
+ENV DOCUMENT_ROOT /var/www/html
+
 CMD entrypoint.sh
