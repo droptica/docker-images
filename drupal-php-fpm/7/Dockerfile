@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
   libmcrypt-dev \
   libjpeg-dev \
   pkg-config libmagickwand-dev imagemagick \
+  zlib1g-dev libicu-dev g++ \
   && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
   && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql mbstring iconv mcrypt zip bcmath intl exif fileinfo\
   && docker-php-ext-enable opcache
