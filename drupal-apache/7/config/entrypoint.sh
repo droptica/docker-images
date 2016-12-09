@@ -6,4 +6,7 @@ if [ "$WEB_USER" ] && [ "$WEB_PASS" ]; then
     a2enconf htpasswd.conf
 fi
 
+sed -i "s#{DOCUMENT_ROOT}#`echo $DOCUMENT_ROOT`#g" /etc/apache2/sites-available/000-default.conf
+sed -i "s#{DOCUMENT_ROOT}#`echo $DOCUMENT_ROOT`#g" /etc/apache2/sites-available/default-ssl.conf
+
 exec apache2-foreground
