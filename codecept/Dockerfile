@@ -1,7 +1,4 @@
-FROM droptica/drupal-dev
-
-RUN curl -L -o /usr/bin/codecept http://codeception.com/codecept.phar \
- && chmod +x /usr/bin/codecept
+FROM composer/composer
 
 RUN mkdir /root/composer_codecept
 
