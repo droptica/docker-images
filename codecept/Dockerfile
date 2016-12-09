@@ -1,4 +1,4 @@
-FROM composer/composer
+FROM droptica/symfony-dev
 
 RUN mkdir /root/composer_codecept
 
