@@ -1,6 +1,6 @@
 FROM droptica/drupal-php-fpm:7-xdebug
 
-RUN apt-get -y install unzip
+RUN apt-get update && apt-get -y install unzip
 
 RUN curl -L -o xhprof.zip https://github.com/RustJason/xhprof/archive/php7.zip \
     && unzip xhprof.zip \
@@ -13,3 +13,6 @@ RUN curl -L -o xhprof.zip https://github.com/RustJason/xhprof/archive/php7.zip \
     && make install
 
 ADD xhprof.ini /usr/local/etc/php/conf.d/xhprof.ini
+
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
