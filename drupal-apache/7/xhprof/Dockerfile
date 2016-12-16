@@ -5,8 +5,9 @@ RUN apt-get update && apt-get -y install unzip
 RUN curl -L -o xhprof.zip https://github.com/RustJason/xhprof/archive/php7.zip \
     && unzip xhprof.zip \
     && rm xhprof.zip \
-    && mv xhprof-php7 /opt/ \
-    && cd /opt/xhprof-php7/extension \
+    && mv xhprof-php7 xhprof \
+    && mv xhprof /opt/ \
+    && cd /opt/xhprof/extension \
     && phpize \
     && ./configure --enable-xhprof \
     && make \
