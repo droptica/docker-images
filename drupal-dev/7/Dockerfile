@@ -1,6 +1,6 @@
 FROM droptica/symfony-dev:7
 
-RUN apt-get update && apt-get install -y --no-install-recommends python python-yaml python-setuptools pkg-config
+RUN apt-get update && apt-get install -y --no-install-recommends python python-pip python-yaml python-setuptools pkg-config
 
 RUN easy_install python-dotenv
 
@@ -13,6 +13,8 @@ RUN php -r "readfile('https://drupalconsole.com/installer');" > /usr/local/bin/d
 
 RUN cd /root && git clone https://github.com/droptica/docker-drupal.git \
     && cd docker-drupal && python setup.py install && cd .. && rm -Rf docker-drupal
+
+RUN pip install docker-console
 
 RUN drush -y dl registry_rebuild-7.x
 
