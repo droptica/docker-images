@@ -12,7 +12,7 @@ RUN php -r "readfile('https://drupalconsole.com/installer');" > /usr/local/bin/d
   && chmod +x /usr/local/bin/drupal && drupal init --no-interaction
 
 RUN cd /root && git clone https://github.com/droptica/docker-drupal.git \
-    && cd docker-drupal && python setup.py install && cd .. && rm -Rf docker-drupal
+    && cd docker-drupal && git checkout tags/v0.1.0 && python setup.py install && cd .. && rm -Rf docker-drupal
 
 RUN pip install docker-console
 
