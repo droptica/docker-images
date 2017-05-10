@@ -1,24 +1,25 @@
 {
   "repositories": [
     {
-      "type": "vcs",
+      "type": "git",
       "url": "https://github.com/droptica/codeception-drupal-bootstrap"
     },
     {
-      "type": "vcs",
+      "type": "git",
       "url": "https://github.com/droptica/codeception-drupal-users"
     },
     {
-      "type": "vcs",
+      "type": "git",
       "url": "https://github.com/droptica/codeception-drupal-storage"
     },
     {
-      "type": "vcs",
+      "type": "git",
       "url": "https://github.com/droptica/codeception-drupal-content-types"
     }
   ],
   "require": {
     "codeception/codeception": "2.*",
+    "codeception/visualception": "*",
     "droptica/codeception-drupal-bootstrap": "dev-develop",
     "droptica/codeception-drupal-users": "dev-master",
     "droptica/codeception-drupal-storage": "dev-master",
