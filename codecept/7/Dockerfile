@@ -1,4 +1,4 @@
-FROM droptica/php-developer:php7
+FROM droptica/php-developer:7.0-v1.5
 
 RUN mkdir /root/composer_codecept
 
