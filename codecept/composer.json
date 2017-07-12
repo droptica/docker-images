@@ -18,7 +18,7 @@
     }
   ],
   "require": {
-    "codeception/codeception": "2.*",
+    "codeception/codeception": "2.2.*",
     "codeception/visualception": "*",
     "droptica/codeception-drupal-bootstrap": "dev-develop",
     "droptica/codeception-drupal-users": "dev-master",
