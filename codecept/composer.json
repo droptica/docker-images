@@ -18,6 +18,8 @@
     }
   ],
   "require": {
+    "consolidation/robo": "^1.0.0",
+    "codeception/robo-paracept":"*",
     "codeception/codeception": "2.*",
     "codeception/visualception": "*",
     "droptica/codeception-drupal-bootstrap": "dev-develop",
