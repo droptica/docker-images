@@ -2,6 +2,10 @@
   "repositories": [
     {
       "type": "git",
+      "url": "https://github.com/droptica/robo-paracept"
+    },
+    {
+      "type": "git",
       "url": "https://github.com/droptica/codeception-drupal-bootstrap"
     },
     {
@@ -19,7 +23,7 @@
   ],
   "require": {
     "consolidation/robo": "^1.0.0",
-    "codeception/robo-paracept":"*",
+    "droptica/robo-paracept":"dev-master",
     "codeception/codeception": "2.*",
     "codeception/visualception": "*",
     "droptica/codeception-drupal-bootstrap": "dev-develop",
