@@ -1,4 +1,4 @@
-FROM node
+FROM node:alpine
 RUN mkdir -p /var/www/html/themes/custom/theme
 RUN touch /var/www/html/themes/custom/theme/gulpfile.js
 COPY package.json /var/www/html/themes/custom/theme/package.json
