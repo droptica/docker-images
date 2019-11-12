@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:10.17.0-alpine
 RUN mkdir -p /var/www/html/themes/custom/theme
 RUN touch /var/www/html/themes/custom/theme/gulpfile.js
 COPY droopler-gulp/config/package.json /var/www/html/themes/custom/theme/package.json
